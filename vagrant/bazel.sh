@@ -12,8 +12,10 @@ if ! command -V java >/dev/null 2>&1; then
     sudo apt-get install -y -q  oracle-java8-installer
 fi
 
+
 # bazel deps
-sudo apt-get install -y -q  pkg-config zip g++ zlib1g-dev unzip
+sudo apt-get install -y -q  pkg-config zip g++ zlib1g-dev unzip wget python
+
 
 if [ ! -f /etc/apt/sources.list.d/bazel.list ]; then
     echo "deb http://storage.googleapis.com/bazel-apt testing jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
@@ -21,4 +23,9 @@ if [ ! -f /etc/apt/sources.list.d/bazel.list ]; then
 fi
 
 sudo apt-get update -y -q
-sudo apt-get install -y -q bazel
+
+# Bazel version 0.4.4 installation
+wget https://github.com/bazelbuild/bazel/releases/download/0.4.4/bazel_0.4.4-linux-x86_64.deb
+chmod +x bazel_0.4.4-linux-x86_64.deb
+sudo dpkg -i bazel_0.4.4-linux-x86_64.deb
+sudo apt-get install -f
