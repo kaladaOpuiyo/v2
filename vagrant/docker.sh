@@ -5,7 +5,7 @@ sudo apt-get install -y -q btrfs-tools libsystemd-journal-dev apparmor debhelper
 
 # docker key
 if [ ! -f /etc/apt/sources.list.d/docker.list ]; then
-    sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
     echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" | sudo tee /etc/apt/sources.list.d/docker.list
     sudo apt-get update -y -q
     sudo apt-get install -y -q docker-engine
